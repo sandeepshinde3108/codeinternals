@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * Explore different input streams in java
  */
-public final class InputStreams {
+public final class InputOutputStreams {
     public static void main(String[] args) {
         System.out.println("----------------------FileInputStream---------------------------------");
         exploreFileInputStream();
@@ -14,11 +14,14 @@ public final class InputStreams {
         System.out.println("-----------------------PipedInputStream--------------------------------");
         explorePipedInputStream();
 
-        System.out.println("------------------------DataInputStream--------------------------------");
-        exploreDataInputStream();
-
         System.out.println("------------------------ObjectInputStream-----------------------------");
         exploreObjectInputStream();
+
+        System.out.println("---------------------FileOutputStream-----------------------------");
+        exploreFileOutputStream();
+
+        System.out.println("----------------------ByteArrayOutputStream-----------------------");
+        exploreByteArrayOutputStream();
     }
 
     private static void exploreFileInputStream(){
@@ -96,33 +99,6 @@ public final class InputStreams {
         }
     }
 
-    /**
-     * Data Input Stream lets reading Java primitive data types from input stream
-     */
-    private static void exploreDataInputStream(){
-        //write primitive data types to a file using DataOutputStream
-        try(DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream("src/data.dat"))){
-            dataOutputStream.writeInt(10);
-            dataOutputStream.writeDouble(3.14);
-            dataOutputStream.writeBoolean(false);
-        } catch (IOException ioEx){
-            System.err.println(ioEx.getMessage());
-        } catch (Exception ex){
-            System.err.println(ex.getMessage());
-        }
-
-        //read primitive data types froma file using DataInputStream
-        try(DataInputStream dataInputStream = new DataInputStream(new FileInputStream("src/data.dat"))){
-            System.out.println(dataInputStream.readInt());
-            System.out.println(dataInputStream.readDouble());
-            System.out.println(dataInputStream.readBoolean());
-        } catch (IOException ioEx){
-            System.err.println(ioEx.getMessage());
-        } catch (Exception ex){
-            System.err.println(ex.getMessage());
-        }
-    }
-
     private static class Student implements Serializable {
         private int id;
         private String name;
@@ -165,6 +141,33 @@ public final class InputStreams {
             Student readStudent = (Student)objectOutputStream.readObject();
             System.out.println(readStudent.getId());
             System.out.println(readStudent.getName());
+        } catch (IOException ioEx){
+            System.err.println(ioEx.getMessage());
+        } catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    private static void exploreFileOutputStream(){
+        try(FileOutputStream fileOutputStream = new FileOutputStream("src/output-test.txt")){
+            String msg = "Hello! how are you?";
+            fileOutputStream.write(msg.getBytes());
+        } catch (IOException ioEx){
+            System.err.println(ioEx.getMessage());
+        } catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    private static void exploreByteArrayOutputStream(){
+        byte[] byteArr = {23, 34, 45, 56, 67};
+        try(ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(5)){
+            byteArrayOutputStream.write(byteArr);
+
+            byte[] buff = byteArrayOutputStream.toByteArray();
+            for (byte b :  buff) {
+                System.out.println(b);
+            }
         } catch (IOException ioEx){
             System.err.println(ioEx.getMessage());
         } catch (Exception ex){
