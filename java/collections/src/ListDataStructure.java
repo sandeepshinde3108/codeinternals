@@ -22,6 +22,12 @@ public class ListDataStructure {
 
         System.out.println("--------------------------CopyOnWriteArrayList------------------------");
         exploreCopyOnWriteArrayList();
+
+        System.out.println("--------------------------Vector--------------------------------------");
+        exploreVector();
+
+        System.out.println("--------------------------Stack---------------------------------------");
+        exploreStack();
     }
 
     private static void exploreArrayList(){
@@ -241,6 +247,125 @@ public class ListDataStructure {
         }
 
         printListDataStructure(threadSafeList);
+    }
+
+    private static void exploreVector(){
+        /**
+         * Vector is similar to ArrayList bound or unbound data structure, but it is thread safe
+         */
+        Vector<Integer> vector = new Vector<>();
+
+        //1. Insertion
+        System.out.println("------------------Insertion----------------------");
+
+        /**
+         * TimeComplexity is O(n)
+         */
+        vector.add(12);
+        vector.add(3);
+        vector.add(34);
+        printListDataStructure(vector);
+
+        //2. Search
+        System.out.println("------------------Search--------------------------");
+
+        /**
+         * TimeComplexity is O(n)
+         */
+        System.out.println(vector.contains(new Integer(3)));
+
+        //3. Access
+        System.out.println("------------------Access---------------------------");
+
+        /**
+         * TimeComplexity is O(1)
+         */
+        System.out.println(vector.get(2));
+
+        //4.Sorting
+        System.out.println("------------------Sorting--------------------------");
+
+        /**
+         * TimeComplexity is O(nlogn)
+         */
+        System.out.println("Ascending using sort method of List");
+        //asc sort using sort method of list datastructure
+        vector.sort(Comparator.naturalOrder());
+        printListDataStructure(vector);
+        System.out.println("Descending using sort method of LinkedList");
+        //desc sort using sort method of list datastructure
+        vector.sort(Comparator.reverseOrder());
+        printListDataStructure(vector);
+
+        System.out.println("Ascending using sort method of Collections utility class");
+        //asc using Collections.sort
+        Collections.sort(vector);
+        printListDataStructure(vector);
+        System.out.println("Descending using sort method of Collections utility class");
+        //desc using Collections.sort
+        Collections.sort(vector, Comparator.reverseOrder());
+        printListDataStructure(vector);
+
+        System.out.println("Ascending using sort method of Stream API");
+        //asc using Stream API sort method
+        List<Integer> ascSortedList = vector.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        printListDataStructure(ascSortedList);
+        System.out.println("Descending using sort method of Stream API");
+        //desc using Stream API sort method
+        List<Integer> descSortedList = vector.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        printListDataStructure(descSortedList);
+
+        //5. Deletion
+        System.out.println("------------------Deletion--------------------------");
+
+        /**
+         * TimeComplexity is O(n)
+         */
+        vector.remove(1);
+        printListDataStructure(vector);
+    }
+
+    private static void exploreStack(){
+        /**
+         * Stack is a LIFO (Last In First Out) principle data structure.
+         * The item that is inserted last in stack is retrieved/removed first from the stack.
+         */
+        Stack<Integer> stack = new Stack();
+        //1. Insertion
+        System.out.println("------------------Insertion----------------------");
+
+        /**
+         * TimeComplexity is O(1)
+         */
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        printListDataStructure(stack);
+
+        //2. Search
+        System.out.println("------------------Search--------------------------");
+
+        /**
+         * TimeComplexity is O(n)
+         */
+        System.out.println(stack.contains(new Integer(2)));
+
+        //3. Access
+        System.out.println("------------------Access---------------------------");
+
+        /**
+         * TimeComplexity is O(1)
+         */
+        System.out.println(stack.peek());
+
+        //4. Deletion
+        System.out.println("------------------Deletion--------------------------");
+
+        /**
+         * TimeComplexity is O(1)
+         */
+        stack.pop();
+        printListDataStructure(stack);
     }
 
     private static void printListDataStructure(List<Integer> list){
