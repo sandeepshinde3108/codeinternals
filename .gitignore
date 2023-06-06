@@ -41,3 +41,7 @@ microservices/blog-example/appserver/zipkin-server/mvnw.cmd
 microservices/blog-example/appserver/zipkin-server/.mvn/wrapper/maven-wrapper.jar
 microservices/blog-example/appserver/api-gateway/.mvn/wrapper/maven-wrapper.jar
 *.jar
+microservices/blog-example/appserver/zipkin-server/.mvn/wrapper/maven-wrapper.jar
+microservices/blog-example/appserver/service-registry-server/.mvn/wrapper/maven-wrapper.jar
+microservices/blog-example/appserver/post-service/.mvn/wrapper/maven-wrapper.jar
+microservices/blog-example/appserver/api-gateway/.mvn/wrapper/maven-wrapper.jar
