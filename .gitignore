@@ -45,3 +45,9 @@ microservices/blog-example/appserver/zipkin-server/.mvn/wrapper/maven-wrapper.ja
 microservices/blog-example/appserver/service-registry-server/.mvn/wrapper/maven-wrapper.jar
 microservices/blog-example/appserver/post-service/.mvn/wrapper/maven-wrapper.jar
 microservices/blog-example/appserver/api-gateway/.mvn/wrapper/maven-wrapper.jar
+java/iterators/.idea/description.html
+java/iterators/.idea/misc.xml
+java/iterators/.idea/modules.xml
+java/iterators/.idea/project-template.xml
+java/iterators/.idea/workspace.xml
+java/iterators/iterators.iml
