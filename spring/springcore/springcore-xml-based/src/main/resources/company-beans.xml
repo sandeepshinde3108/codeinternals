@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--If you have a singleton class with args then do it like below, if there no args then onyl factory-method will be specified not constructor args-->
+    <bean id="company" class="Company" factory-method="getInstance">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Abc"/>
+    </bean>
+</beans>

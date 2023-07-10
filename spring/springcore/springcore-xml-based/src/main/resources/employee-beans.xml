@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--using import you can import beans defined in another config file-->
+    <import resource="department-beans.xml"/>
+
+    <bean id="employee" class="Employee">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Sandeep"/>
+        <constructor-arg name="department" ref="department"/>
+    </bean>
+
+    <bean id="employee2" class="Employee">
+        <constructor-arg name="id" value="2"/>
+        <constructor-arg name="name" value="Sandeep1"/>
+        <!--nested ref element-->
+        <constructor-arg name="department">
+            <ref bean="department"/>
+        </constructor-arg>
+    </bean>
+</beans>
