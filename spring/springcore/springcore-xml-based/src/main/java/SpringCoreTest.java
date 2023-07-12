@@ -1,3 +1,4 @@
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,7 +8,7 @@ public final class SpringCoreTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("employee-beans.xml", "company-beans.xml");
 
         //get list of beans created in Spring container
-        System.out.println("--------------------List of Beans in the Spring Container-------------------");
+        System.out.println("--------------------List all Beans of Department Type in the Spring Container-------------------");
         String[] names = context.getBeanNamesForType(Department.class);
         for (String name : names) {
             System.out.println(name);

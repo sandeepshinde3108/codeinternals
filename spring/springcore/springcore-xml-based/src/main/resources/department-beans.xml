@@ -4,24 +4,23 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--bean with setter injection -->
-    <bean name="department" class="Department">
-        <property name="id" value="2"/>
-        <property name="name" value="Computer"/>
-    </bean>
-
+    <!--bean with default constructor-->
+    <bean id="department" class="Department"></bean>
     <!--aliases to the above bean providing different names to reference the bean-->
     <alias name="department" alias="department1"/>
     <alias name="department" alias="department2"/>
 
     <!--bean with constructor injection-->
-    <bean id="departmentWithArgs" class="Department">
+    <bean id="departmentWithConstructorArgs" class="Department">
         <constructor-arg name="id" value="1"></constructor-arg>
         <constructor-arg name="name" value="Mechanical"></constructor-arg>
     </bean>
 
-    <!--bean without any identifier, in which case container generates an identifier-->
-    <bean class="Department"></bean>
+    <!--bean with setter injection -->
+    <bean name="departmentWithSetterArgs" class="Department">
+        <property name="id" value="2"/>
+        <property name="name" value="Computer"/>
+    </bean>
 
     <!--bean with constructor injection, providing constructor args in the order they are present within constructor definition-->
     <bean id="deptWithOrderedArgs" class="Department">
@@ -34,4 +33,8 @@
         <constructor-arg type="java.lang.String" value="Chemical"/>
         <constructor-arg type="int" value="3"/>
     </bean>
+
+    <!--bean without any identifier, in which case container generates an identifier-->
+    <bean class="Department"></bean>
+
 </beans>
