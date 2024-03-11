@@ -1,0 +1,35 @@
+server:
+  port: ${PORT:8228}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/api/post/**
+
+
+#Eureka
+eureka:
+  client:
+    sericeURL:
+      DefaultZone: http://localhost:8761/eureka
+    lease:
+      duration: 5
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+
+#metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, threaddump, heapdump, prometheus
+  endpoint:
+    prometheus:
+      enabled: true

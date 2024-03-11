@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean with default constructor-->
+    <bean id="department" class="Department"></bean>
+    <!--aliases to the above bean providing different names to reference the bean-->
+    <alias name="department" alias="department1"/>
+    <alias name="department" alias="department2"/>
+
+    <!--bean with constructor injection-->
+    <bean id="departmentWithConstructorArgs" class="Department">
+        <constructor-arg name="id" value="1"></constructor-arg>
+        <constructor-arg name="name" value="Mechanical"></constructor-arg>
+    </bean>
+
+    <!--bean with setter injection -->
+    <bean name="departmentWithSetterArgs" class="Department">
+        <property name="id" value="2"/>
+        <property name="name" value="Computer"/>
+    </bean>
+
+    <!--bean with constructor injection, providing constructor args in the order they are present within constructor definition-->
+    <bean id="deptWithOrderedArgs" class="Department">
+        <constructor-arg index="0" value="2"/>
+        <constructor-arg index="1" value="Civil"/>
+    </bean>
+
+    <!--bean with constructor injection, providing constructor args by type-->
+    <bean id="deptWithTypeArgs" class="Department">
+        <constructor-arg type="java.lang.String" value="Chemical"/>
+        <constructor-arg type="int" value="3"/>
+    </bean>
+
+    <!--bean without any identifier, in which case container generates an identifier-->
+    <bean class="Department"></bean>
+
+</beans>
