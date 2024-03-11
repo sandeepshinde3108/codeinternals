@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="department" class="Department" init-method="init" destroy-method="cleanUp"></bean>
+
+    <bean id="address1" class="Address" primary="true">
+        <constructor-arg name="street" value="wallstreet"/>
+        <constructor-arg name="city" value="NewYork"/>
+    </bean>
+
+    <bean id="address2" class="Address">
+        <constructor-arg name="street" value="Regent Plaza street"/>
+        <constructor-arg name="city" value="London"/>
+    </bean>
+
+    <bean id="contact1" class="ContactInfo">
+        <qualifier value="primarycontact"/>
+        <constructor-arg name="email" value="abc@xyz.com"/>
+        <constructor-arg name="mobileNo" value="12345"/>
+    </bean>
+
+    <bean id="contact2" class="ContactInfo">
+        <qualifier value="alternatecontact"/>
+        <constructor-arg name="email" value="lmn@xyz.com"/>
+        <constructor-arg name="mobileNo" value="56789"/>
+    </bean>
+
+    <bean id="emp" class="Employee">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Sandeep"/>
+    </bean>
+</beans>
